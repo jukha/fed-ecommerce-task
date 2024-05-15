@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  background: #001a21;
+  /* background: #001a21; */
   font-family: "Poppins", sans-serif;
-  color: #fff;
+  /* color: #fff; */
 }
