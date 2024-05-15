@@ -20,8 +20,8 @@ function Products() {
     fetchProducts();
   }, []);
   return (
-    <div>
-      <h1>Products</h1>
+    <div className="container mx-auto px-4">
+      <h1 className="text-center text-3xl py-4 ">Products</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -29,7 +29,6 @@ function Products() {
           {products.map((product) => (
             <li key={product.id}>
               <div>
-                
                 <h2>{product.title}</h2>
                 <p>Price: ${product.price}</p>
               </div>
