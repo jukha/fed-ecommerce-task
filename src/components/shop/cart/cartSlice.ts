@@ -21,17 +21,16 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity = newItem.quantity;
         existingItem.totalPrice = newItem.totalPrice;
-        existingItem.size = newItem.size;
       } else {
         state.cart.push(action.payload);
       }
     },
 
-    deleteItem(state, action: PayloadAction<number>) {
+    deleteItem(state, action: PayloadAction<string>) {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
 
-    increaseItemQuantity(state, action: PayloadAction<number>) {
+    increaseItemQuantity(state, action: PayloadAction<string>) {
       const item = state.cart.find((item) => item.id === action.payload);
 
       if (item) {
@@ -40,7 +39,7 @@ const cartSlice = createSlice({
       }
     },
 
-    decreaseItemQuantity(state, action: PayloadAction<number>) {
+    decreaseItemQuantity(state, action: PayloadAction<string>) {
       const item = state.cart.find((item) => item.id === action.payload);
 
       if (item) {
@@ -76,8 +75,8 @@ export const selectTotalCartQuantity = (state: RootState) =>
 export const selectTotalCartPrice = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
-export const selectCurrentQuantityById = (id: number) => (state: RootState) =>
+export const selectCurrentQuantityById = (id: string) => (state: RootState) =>
   state.cart.cart.find((item) => item.id === id)?.quantity ?? 0;
 
-export const selectItemById = (id: number) => (state: RootState) =>
+export const selectItemById = (id: string) => (state: RootState) =>
   state.cart.cart.find((item) => item.id === id);

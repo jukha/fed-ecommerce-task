@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Product as ProductType } from "../../../types/Product";
 import { getAllProducts } from "../../../services/apiProduct";
+import Loader from "../../../ui/Loader";
 
 function Products() {
   const [loading, setLoading] = useState(true);
@@ -21,10 +22,10 @@ function Products() {
     fetchProducts();
   }, []);
   return (
-    <div className="container mx-auto px-4">
+    <>
       <h1 className="text-center text-5xl font-semibold mt-10 ">Products</h1>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-center mt-8">
           {products.map((product) => (
@@ -51,7 +52,7 @@ function Products() {
           ))}
         </ul>
       )}
-    </div>
+    </>
   );
 }
 
